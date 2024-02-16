@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <a asp-controller="TripLog" asp-action="Add" style="font-weight: 600; text-decoration: none; font-weight: bold; color: #1788e0;">Add Trip</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Destination</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Accommodation</th>
+            <th scope="col">Things To Do</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tripLog in Model)
+        {
+            <tr>
+                <td>@tripLog.Destination</td>
+                <td>@tripLog.StartDate.ToShortDateString()</td>
+                <td>@tripLog.EndDate.ToShortDateString()</td>
+                <td>@tripLog.Accommodation</td>
+                <td>
+                    <ul>
+                        <li>@tripLog.ThingToDo1</li>
+                        <li>@tripLog.ThingToDo2</li>
+                        <li>@tripLog.ThingToDo3</li>
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
